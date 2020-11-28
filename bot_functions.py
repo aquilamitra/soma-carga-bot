@@ -22,7 +22,7 @@ class Bot():
         self.ucd = Unicodes()
 
         self.administrator_chat_id = 764061009
-        self.chat_id_list = [764061009]
+        self.chat_id_list = [764061009, 1469694219]
         
         self.total = 0
         self.last_cache = None
@@ -66,7 +66,9 @@ class Bot():
                     new_value = command.split(' ')[1]
                     new_value = float(str(new_value).replace(',', '.'))
                     self.new_entry(new_value)
-                    self.chatbot.sendMessage(chat_id, f'{caminhao} Novo valor de R${new_value} cadastrado!')
+                    self.chatbot.sendMessage(chat_id, f'{caminhao} Novo valor ' +
+                                                      f'R${new_value} cadastrado!\n' +
+                                                      f'\nTotal:\n{nota} {self.total}')
                 except IndexError or ValueError:
                     self.chatbot.sendMessage(chat_id, 'Comando invalido! A forma correta é: \n"/nova 1234,56".')
             elif '/limpar' in command:
